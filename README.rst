@@ -1,5 +1,3 @@
--
-
 Matplotlib animation manager (GUI) 1.0a1
 *********************************************
 
