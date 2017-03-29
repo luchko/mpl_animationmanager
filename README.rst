@@ -1,7 +1,7 @@
 Matplotlib animation manager (GUI) 1.0a1
 *********************************************
 
-- Git-hub repo: [LINK]
+- Git-hub repo: https://github.com/Luchko/mpl_animation-manager
 - Documentation: [Links to the project's ReadTheDocs page]
 - Free software: MIT license
 
