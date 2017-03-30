@@ -314,7 +314,7 @@ For configuring the writers refer to the
 <a href="http://matplotlib.org/api/animation_api.html">matplotlib website</a>.
 <br><br>
 For bug reports and feature requests, please go to our 
-<a href="https://github.com/Luchko/mpl_animation-manager">Github website</a>.
+<a href="https://github.com/luchko/mpl_animation-manager">Github website</a>.
 '''
         self.msg.setText(text)
         self.msg.setWindowTitle("Info")
