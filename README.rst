@@ -15,7 +15,7 @@ Build status
 Overview
 ========
 
-It is a small convenient tool which allows to setup and save matplotlib animation using PyQt based GUI. Program can deal with both 2D and 3D animation. For 3D axes manager can add additional rotation of the view point resulting in both object modification and rotation animation. Also animation manager can be easily integrated in your larger PyQt project as a dialog. For more details see the Quitckstart section.
+It is a small convenient tool which allows to setup and save `matplotlib animation <http://matplotlib.org/api/animation_api.html>`_ using the `PyQt <https://riverbankcomputing.com/software/pyqt/intro>`_ based GUI. Program can deal with both 2D and 3D animation. For 3D axes manager can add additional rotation of the view point resulting in both object modification and rotation animation. Also animation manager can be easily integrated in your larger PyQt project as a dialog. For more details see the Quitckstart section.
 
 Program is compatible with Python 2.7 or Python 3.3+ and PyQt4 4.6+ or PyQt5 5.2+.
 
@@ -30,13 +30,13 @@ Program is compatible with Python 2.7 or Python 3.3+ and PyQt4 4.6+ or PyQt5 5.2
 Main features:
 ==============
 
-- ``mpl_animationmanager`` library contains two classes ``AnimationManager`` and ``QDialogAnimManager`` with the same input arguments (see API LINK).
+- ``mpl_animationmanager`` library contains two classes ``AnimationManager`` and ``QDialogAnimManager`` with the same input arguments (`see API`_).
 - ``QDialogAnimManager`` is inherited from the PyQt ``QDialog``. Using this class you can easily integrate animation manager as a QDialog into your larger PyQt application.
 - ``AnimationManager`` is a small class build on top of the ``QDialogAnimManager`` and uses the input arguments to initialize the ``QDialogAnimManager`` object and run a PyQt application using ``run()`` function.
 - After passing the required arguments to the manager, user can setup animation properties such as: dpi, fps (frames per second), modification period.
 - For 3D animation user can also setup the rotation period, elevation and initilal azimut angles. The resulting duration of the animation equals the least common multiple of modification and rotaion periods if both are provided. 
 - Animation can be saved in gif or mp4 format by picking one of the preinstalled movie writers used by matplotlib (imagemagick, ffmpeg etc.).
-- Check a short demo video on YouTube. [LINK SHOULD BE HERE]
+- Check a short demo video on YouTube. [LINK]
 
 Quickstart
 ==========
@@ -65,13 +65,17 @@ Running from source
 It is possible to use animation manager without installing it.
 
 1. Make sure that PyQt4 or PyQt5 package is installed.
-2. Put the ``mpl_animationmanager`` source code folder into the root directiory of your script.
-3. Now you can import ``mpl_animationmanager`` to your sript the same way as it would be installed.
+2. Copy the ``./mpl_animationmanager/`` package folder into the root directiory of your script.
+3. Now you can import ``mpl_animationmanager`` to your sript the same way as it would have been installed.
 
 You may want to do this for fixing bugs, adding new features, learning how the tool works or just getting a taste of it.
 
+.. _`see API`:
+
 API
 ---
+
+Both ``AnimationManager`` and ``QDialogAnimManager`` classes take the same input arguments
 
 .. code-block:: python
 
@@ -95,11 +99,11 @@ API
 Small example
 --------------
 
-Code below produces the same animation as one shown at the main demo above. 
+Code below produces the same animation as one shown at the main demo above.
 
 .. code-block:: python
 
-    """script runs small example of the animation manager usage"""
+    """script runs a small example of the animation manager usage"""
     
     import numpy as np
     import matplotlib.pyplot as plt
