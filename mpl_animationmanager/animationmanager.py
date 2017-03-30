@@ -73,11 +73,18 @@ class QDialogAnimManager(QDilaog, Ui_QDialogAnimManager):
     
     def __init__(self, ax, fAnim=None, fargs=None, numFramesModif=None, *args, **kwargs):
         '''
-        ax - axes object (2D or 3D) with binded to figure...
-        fAnim(i, ax, fargs): - function that modifies figure at each "i" step
-        fargs - fAnim arguments
-        numFramesModif - number of modification frames       
-        '''  
+        Parameters
+        ----------
+        ax : 2D or 3D matplotlib axes object binded to the figure
+            provides control over animated figure
+        fAnim : function
+            fAnim(i, ax, fargs) - modifies the "ax" at each "i" step
+        fargs : any
+            arguments used by the "fAnim" function during the "ax" modification
+        numFramesModif : int
+            number of modification frames
+
+        '''          
         super(QDialogAnimManager, self).__init__()
         self.setAttribute(Qt.WA_DeleteOnClose)
         self.setupUi(self)
@@ -398,10 +405,17 @@ class AnimationManager(object):
     
     def __init__(self, ax, fAnim=None, fargs=None, numFramesModif=None, *args, **kwargs):
         '''
-        ax - axes object (2D or 3D) with binded to figure...
-        fAnim(i, ax, fargs): - function that modifies figure at each "i" step
-        fargs - fAnim arguments
-        numFramesModif - number of modification frames        
+        Parameters
+        ----------
+        ax : 2D or 3D matplotlib axes object binded to the figure
+            provides control over animated figure
+        fAnim : function
+            fAnim(i, ax, fargs) - modifies the "ax" at each "i" step
+        fargs : any
+            arguments used by the "fAnim" function during the "ax" modification
+        numFramesModif : int
+            number of modification frames
+
         '''          
         self.fig = ax.get_figure()
         self.dlg = QDialogAnimManager(ax, fAnim, fargs, numFramesModif, *args, **kwargs)

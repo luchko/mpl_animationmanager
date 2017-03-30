@@ -73,23 +73,61 @@ You may want to do this for fixing bugs, adding new features, learning how the t
 API
 ---
 
-.. automodule:: mpl_animationmanager.mpl_animationmanager.QDialogAnimManager
-    :members:
-    :undoc-members:
-    :show-inheritance:
+.. code-block:: python
 
+    class AnimationManager(object):    
+
+        def __init__(self, ax, fAnim=None, fargs=None, numFramesModif=None, *args, **kwargs):
+            '''
+            Parameters
+            ----------
+            ax : 2D or 3D matplotlib axes object binded to the figure
+                provides control over animated figure
+            fAnim : function
+                fAnim(i, ax, fargs) - modifies the "ax" at each "i" step
+            fargs : any
+                arguments used by the "fAnim" function during the "ax" modification
+            numFramesModif : int
+                number of modification frames
+    
+            '''          
+        
 Small example
 --------------
 
 Code below produces the same animation as one shown at the main demo above. 
 
-.. literalinclude:: ./examples/small_example.py
-    :linenos:
-    :language: python
-    :lines: 1, 3-5
-    :start-after: 3
-    :end-before: 5
+.. code-block:: python
 
+    """script runs small example of the animation manager usage"""
+    
+    import numpy as np
+    import matplotlib.pyplot as plt
+    from mpl_toolkits.mplot3d import axes3d
+    from mpl_animationmanager import AnimationManager
+    
+    def fAnim(j, ax, lineColl):
+        '''define the modification animation function'''
+        ax.collections = [] # clean axes
+        ax.add_collection3d(lineColl[j]) # add new artist
+    
+    # create figure        
+    fig = plt.figure('3D wireframe example')
+    ax = fig.gca(projection='3d')
+    ax.set_axis_off()
+    
+    # generate modification frames (passed as fargs)
+    numFrames = 300     
+    X, Y, Z = axes3d.get_test_data(0.05)
+    for j in range(numFrames):
+        ax.plot_wireframe(X, Y, Z*np.cos(2*np.pi/numFrames*j), rstride=5, cstride=5)
+    fargs = ax.collections
+    ax.collections = []
+                        
+    # pass figure to animation manager
+    mng = AnimationManager(ax, fAnim, fargs, numFrames) 
+    mng.run()
+    
 More examples are included in ``./examples/`` folder.
 
 Contacts:
