@@ -3,8 +3,8 @@
 """
 Copyright (c) 2017, Ivan Luchko and Project Contributors 
 Licensed under the terms of the MIT License 
-
-@author: Ivan Luchko (luchko.ivan@gmail.com)
+https://github.com/luchko/mpl_animation-manager
+luchko.ivan@gmail.com
 
 This module contains the definition of the matplotlib animation management tool.
     

@@ -66,7 +66,7 @@ It is possible to use animation manager without installing it.
 
 1. Make sure that PyQt4 or PyQt5 package is installed.
 2. Copy the ``./mpl_animationmanager/`` package folder into the root directiory of your script.
-3. Now you can import ``mpl_animationmanager`` to your sript the same way as it would have been installed.
+3. Now you can import ``mpl_animationmanager`` module to your sript the same way as it would have been installed.
 
 You may want to do this for fixing bugs, adding new features, learning how the tool works or just getting a taste of it.
 
@@ -128,7 +128,7 @@ Code below produces the same animation as one shown at the main demo above.
     fargs = ax.collections
     ax.collections = []
                         
-    # pass figure to animation manager
+    # pass figure to the animation manager
     mng = AnimationManager(ax, fAnim, fargs, numFrames) 
     mng.run()
     
