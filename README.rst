@@ -2,15 +2,12 @@ Matplotlib animation manager (GUI) 1.0a1
 *********************************************
 
 - Git-hub repo: https://github.com/luchko/mpl_animation-manager
-- Documentation: [Links to the project's ReadTheDocs page]
 - Free software: MIT license
 
 Build status
 ============
 
-[A TravisCI button showing the state of the build]
-
-[pyup.io button to deal with requirements]
+NO BUILDS YET
 
 Overview
 ========
@@ -36,7 +33,6 @@ Main features:
 - After passing the required arguments to the manager, user can setup animation properties such as: dpi, fps (frames per second), modification period.
 - For 3D animation user can also setup the rotation period, elevation and initilal azimut angles. The resulting duration of the animation equals the least common multiple of modification and rotaion periods if both are provided. 
 - Animation can be saved in gif or mp4 format by picking one of the preinstalled movie writers used by matplotlib (imagemagick, ffmpeg etc.).
-- Check a short demo video on YouTube. [LINK]
 
 Quickstart
 ==========
@@ -44,20 +40,7 @@ Quickstart
 Installation (cross-platform way from source)
 ---------------------------------------------
 
-1. Download a source of the last stable package version [LINK]
-2. Open the terminal.
-3. Move to the package root directory.
-4. In your command prompt type:
-
-   .. code::
-
-      python setup.py install
-
-5. Thats it. Further, your can import the module into your python script by
-
-   .. code:: python
-   
-      import mpl_animationmanager
+NOT IMPLEMENTED YET
 
 Running from source
 -------------------
