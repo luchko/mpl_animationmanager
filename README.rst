@@ -21,7 +21,7 @@ Program is compatible with Python 2.7 or Python 3.3+ and PyQt4 4.6+ or PyQt5 5.2
 
 -------------------------
 
-.. figure::  ./img_scr/demo.gif
+.. figure::  ./img_src/demo.gif
    :align:   center
    :figwidth: 100 %
    
