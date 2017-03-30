@@ -16,7 +16,7 @@ Module is compatible with both pyQt4 and pyQt5
 """
 from __future__ import division # to handle python2 int division
 
-# define pyQt version
+# define PyQt version
 try:
     import PyQt4 as PyQt
     pyQtVersion = "PyQt4"
@@ -48,7 +48,9 @@ def getPathString(output):
     return str(output if pyQtVersion == "PyQt4" else output[0])
 
 #import python libs
-import sys, subprocess, os
+import os
+import sys
+import subprocess
 from matplotlib import animation
 import matplotlib.pyplot as plt
 
@@ -419,10 +421,13 @@ class AnimationManager(object):
         '''          
         self.fig = ax.get_figure()
         self.dlg = QDialogAnimManager(ax, fAnim, fargs, numFramesModif, *args, **kwargs)
+        
+        # bind fig and dlg for close event
         self.dlg.closed.connect(lambda: plt.close(self.fig))
-    
+        self.fig.canvas.mpl_connect('close_event', lambda e: self.dlg.reject())
+        
     def run(self):
-        '''Open the QDialogAnimManager and run  the animation'''
+        '''Open the QDialogAnimManager and run the animation'''
         
         self.dlg.show()
         self.fig.show()

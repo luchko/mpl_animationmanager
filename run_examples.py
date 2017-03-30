@@ -11,10 +11,10 @@ import examples.modif_randwalk_3D
 def run_examples():
     """Main entry point for the script."""
     
-#    examples.oscillation_2D.run()
+    examples.oscillation_2D.run()
     examples.rot_graph_3D.run()
-#    examples.modif_wireframe_3D.run()
-#    examples.modif_randwalk_3D.run()
+    examples.modif_wireframe_3D.run()
+    examples.modif_randwalk_3D.run()
 
 
 if __name__ == '__main__':
