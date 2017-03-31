@@ -927,54 +927,6 @@
   <connection>
    <sender>checkBox_rot</sender>
    <signal>toggled(bool)</signal>
-   <receiver>label_5</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>13</x>
-     <y>123</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>11</x>
-     <y>159</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>checkBox_rot</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>label_7</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>22</x>
-     <y>120</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>13</x>
-     <y>204</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>checkBox_rot</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>horizontalSlider_4</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>25</x>
-     <y>124</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>144</x>
-     <y>200</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>checkBox_rot</sender>
-   <signal>toggled(bool)</signal>
    <receiver>spinBox_period_rot</receiver>
    <slot>setEnabled(bool)</slot>
    <hints>
@@ -1017,54 +969,6 @@
     <hint type="destinationlabel">
      <x>100</x>
      <y>125</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>checkBox_rot</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>spinBox_elev</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>21</x>
-     <y>109</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>334</x>
-     <y>147</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>checkBox_rot</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>horizontalSlider_3</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>24</x>
-     <y>110</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>139</x>
-     <y>146</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>checkBox_rot</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>spinBox_azim</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>23</x>
-     <y>113</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>322</x>
-     <y>199</y>
     </hint>
    </hints>
   </connection>
