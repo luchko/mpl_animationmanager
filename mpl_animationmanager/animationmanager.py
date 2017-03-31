@@ -3,7 +3,7 @@
 """
 Copyright (c) 2017, Ivan Luchko and Project Contributors 
 Licensed under the terms of the MIT License 
-https://github.com/luchko/mpl_animation-manager
+https://github.com/luchko/mpl_animationmanager
 luchko.ivan@gmail.com
 
 This module contains the definition of the matplotlib animation management tool.
@@ -316,7 +316,7 @@ For configuring the writers refer to the
 <a href="http://matplotlib.org/api/animation_api.html">matplotlib website</a>.
 <br><br>
 For bug reports and feature requests, please go to our 
-<a href="https://github.com/luchko/mpl_animation-manager">Github website</a>.
+<a href="https://github.com/luchko/mpl_animationmanager">Github website</a>.
 '''
         self.msg.setText(text)
         self.msg.setWindowTitle("Info")
