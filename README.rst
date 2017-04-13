@@ -1,24 +1,47 @@
 Matplotlib animation manager (GUI) 1.0a1
-*********************************************
+****************************************
+
+.. image:: https://img.shields.io/pypi/v/mpl-animationmanager.svg
+        :target: https://pypi.python.org/pypi/mpl-animationmanager
+        :alt: PyPi
+
+.. image:: https://img.shields.io/pypi/status/mpl-animationmanager.svg
+        :target: https://pypi.python.org/pypi/mpl-animationmanager
+        :alt: status
+
+.. image:: https://img.shields.io/pypi/l/mpl-animationmanager.svg
+        :target: https://github.com/luchko/mpl-animationmanager/blob/master/LICENSE.txt
+        :alt: License
+
+.. image:: https://readthedocs.org/projects/mpl-animationmanager/badge/?version=latest
+        :target: http://mpl-animationmanager.readthedocs.io/en/latest/?badge=latest
+        :alt: Documentation Status
+
+.. image:: https://travis-ci.org/luchko/mpl_animationmanager.svg?branch=master
+        :target: https://travis-ci.org/luchko/mpl_animationmanager
+        :alt: travis-ci
+
+.. image:: https://coveralls.io/repos/github/luchko/mpl_animationmanager/badge.svg?branch=master
+	:target: https://coveralls.io/github/luchko/mpl_animationmanager?branch=master
+        :alt: coveralls
 
 - Git-hub repo: https://github.com/luchko/mpl_animationmanager
 - Free software: MIT license
-
-Build status
-============
-
-NO BUILDS YET
 
 Overview
 ========
 
 It is a small convenient tool which allows to setup and save `matplotlib animation <http://matplotlib.org/api/animation_api.html>`_ using the `PyQt <https://riverbankcomputing.com/software/pyqt/intro>`_ based GUI. Program can deal with both 2D and 3D animation. For 3D axes manager can add additional rotation of the view point resulting in both object modification and rotation animation. Also animation manager can be easily integrated in your larger PyQt project as a dialog. For more details see the Quitckstart section.
 
-Program is compatible with Python 2.7 or Python 3.3+ and PyQt4 4.6+ or PyQt5 5.2+.
+- Git-hub repo: https://github.com/luchko/mpl_animationmanager
+- Documentation: https://mpl-animationmanager.readthedocs.io
+- Free software: MIT license
+
+Tool is based on PyQt and is compatible with Python 2.7 or Python 3.3+ and PyQt4 4.6+ or PyQt5 5.2+.
 
 -------------------------
 
-.. figure::  ./img_src/demo.gif
+.. figure::  https://raw.githubusercontent.com/luchko/mpl_animationmanager/master/img_src/demo.gif
    :align:   center
    :figwidth: 100 %
    
