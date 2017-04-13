@@ -31,7 +31,7 @@ It is a small convenient tool which allows to setup and save `matplotlib animati
 - Documentation: https://mpl-animationmanager.readthedocs.io
 - Free software: MIT license
 
-Tool is based on PyQt and is compatible with Python 2.7 or Python 3.3+ and PyQt4 4.6+ or PyQt5 5.2+.
+Tool is compatible with Python 2.7 or Python 3.3+ and PyQt4 4.6+ or PyQt5 5.2+.
 
 -------------------------
 
