@@ -41,8 +41,8 @@ Tool is compatible with Python 2.7 or Python 3.3+ and PyQt4 4.6+ or PyQt5 5.2+.
    
 -------------------------
 
-Main features:
-==============
+Features
+========
 
 - ``mpl_animationmanager`` library contains two classes ``AnimationManager`` and ``QDialogAnimManager`` with the same input arguments (`see API`_).
 - ``QDialogAnimManager`` is inherited from the PyQt ``QDialog``. Using this class you can easily integrate animation manager as a QDialog into your larger PyQt application.
@@ -135,8 +135,8 @@ Code below produces the same animation as one shown at the main demo above.
     
 More examples are included in ``./mpl_animationmanager/examples/`` folder.
 
-Contacts:
-=========
+Contacts
+========
 
 About the feature extension or bugs report you can create `the issue or feature request <https://github.com/luchko/mpl_animationmanager/issues>`_ or feel free to contact me directly by e-mail:
 
