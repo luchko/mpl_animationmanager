@@ -1,0 +1,27 @@
+[run]
+
+omit =
+    *__init__*    
+    */test/*
+    */examples/* 
+    
+
+[report]
+
+# also exclude part of code that contain modal dialog call
+exclude_lines =
+
+    if __name__ == .__main__.:
+    
+    pragma: no cover
+    
+    .exec()_
+    
+    #required for dealing with modal QFileDialog
+    def getPathString
+    
+    # contain Filedialog call
+    def browse_callback
+    
+    # required additional system tools
+    def show_anim_callback

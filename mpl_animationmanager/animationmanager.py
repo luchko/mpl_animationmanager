@@ -51,6 +51,7 @@ def getPathString(output):
 #import python libs
 import os
 import sys
+import unittest
 import subprocess
 from matplotlib import animation
 import matplotlib.pyplot as plt
@@ -75,6 +76,7 @@ class QDialogAnimManager(QDilaog, Ui_QDialogAnimManager):
     anyway can be animated with the rotation animation.   
     '''
     closed = pyqtSignal(object) # used for interaction with parent
+    EXPORT_RUNNING = False # True while exporting the animation
     
     def __init__(self, ax, fAnim=None, fargs=None, numFramesModif=None, *args, **kwargs):
         '''
@@ -355,6 +357,8 @@ For bug reports and feature requests, please go to our
     def export_callback(self):
         '''export animation to file mp4 or gif file'''
         
+        self.EXPORT_RUNNING = True
+        
         if len(animation.writers.list()) == 0:
             self.msb_noWriters = QMessageBox()
             self.msb_noWriters.setIcon(QMessageBox.Critical)
@@ -376,6 +380,7 @@ For bug reports and feature requests, please go to our
         self.btnShow.setEnabled(True)
         print(" animation exported into '{}'".format(os.path.basename(self.filepath)))
 
+        self.EXPORT_RUNNING = False
         
     def close_callback(self):
         self.anim._stop()
@@ -425,6 +430,24 @@ class AnimationManager(object):
     '''
     app = QApplication([]) # start PyQt application
     
+    class TestThread(QThread):
+        '''separate thread for running the unittest suit'''
+        
+        def __init__(self, testSuite , *args, **kwargs):
+            '''
+            Parameters
+            ----------
+            testSuite : unittest.TestSuite
+                prepared unittest suit which will be run to test QObject
+            '''
+            QThread.__init__(self, *args, **kwargs)
+            self.testSuite = testSuite
+    
+        def run(self):
+            '''method which runs the TestCase'''
+            self.result = unittest.TextTestRunner().run(self.testSuite)
+            self.exit(not self.result.wasSuccessful())
+    
     def __init__(self, ax, fAnim=None, fargs=None, numFramesModif=None, *args, **kwargs):
         '''
         Parameters
@@ -437,7 +460,6 @@ class AnimationManager(object):
             arguments used by the "fAnim" function during the "ax" modification
         numFramesModif : int
             number of modification frames
-
         '''
         self.ax = ax          
         self.fig = ax.get_figure()
@@ -463,29 +485,27 @@ class AnimationManager(object):
         ----------
         MyTestCase: unittest.TestCase
             class defining unittest case
+            
+        Return
+        ------
+        result: unittest.TestResult
+            instance containing the results of the running TestCase
         '''
-        
-        import unittest
-        
+        # initialize test suite based on the MyTestCase
         test_loader = unittest.TestLoader()
         test_names = test_loader.getTestCaseNames(MyTestCase)
-    
         suite = unittest.TestSuite()
         for test_name in test_names:
             suite.addTest(MyTestCase(test_name, self.ax, self.dlg))
-     
-        class TestThread(QThread):
         
-            def run(self):
-                '''method which runs the TestCase'''
-                result = unittest.TextTestRunner().run(suite)
-                self.parent().exit()
-                sys.exit(not result.wasSuccessful())
-
-        thread = TestThread(parent = self.app)
+        # create test thread and pass test suite
+        thread = self.TestThread(testSuite=suite, parent=self.app)
+        thread.finished.connect(self.dlg.close)
         
-        timer = QTimer(parent = self.app)
+        # start thread after the app.exec_() is called (main loop started)
+        timer = QTimer(parent=self.app)
         timer.singleShot(0, thread.start)
-       
-        return self.run()
         
+        self.run()
+        
+        return thread.result

@@ -12,8 +12,8 @@ def run_examples():
     """Main entry point for the script."""
     
 #    oscillation_2D.run()
-#    rot_graph_3D.run()
-    modif_wireframe_3D.run()
+    rot_graph_3D.run()
+#    modif_wireframe_3D.run()
 #    modif_randwalk_3D.run()
 
 

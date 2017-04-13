@@ -1,0 +1,10 @@
+include docs/*
+
+include mpl_animationmanager/*.ui
+include mpl_animationmanager/images/*.png
+
+include run_examples.py
+include LICENSE.txt
+include MANIFEST.in
+include README.rst
+include requirements.txt
