@@ -35,7 +35,7 @@ Tool is based on PyQt and is compatible with Python 2.7 or Python 3.3+ and PyQt4
 
 -------------------------
 
-.. figure::  https://raw.githubusercontent.com/luchko/mpl_animationmanager/master/img_src/demo.gif
+.. figure::  https://github.com/luchko/mpl_animationmanager/blob/master/img_src/demo.gif?raw=true
    :align:   center
    :figwidth: 100 %
    
