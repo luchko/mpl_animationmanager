@@ -25,12 +25,6 @@ Matplotlib animation manager (GUI) 1.0a1
 	:target: https://coveralls.io/github/luchko/mpl_animationmanager?branch=master
         :alt: coveralls
 
-- Git-hub repo: https://github.com/luchko/mpl_animationmanager
-- Free software: MIT license
-
-Overview
-========
-
 It is a small convenient tool which allows to setup and save `matplotlib animation <http://matplotlib.org/api/animation_api.html>`_ using the `PyQt <https://riverbankcomputing.com/software/pyqt/intro>`_ based GUI. Program can deal with both 2D and 3D animation. For 3D axes manager can add additional rotation of the view point resulting in both object modification and rotation animation. Also animation manager can be easily integrated in your larger PyQt project as a dialog. For more details see the Quitckstart section.
 
 - Git-hub repo: https://github.com/luchko/mpl_animationmanager
