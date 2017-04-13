@@ -116,7 +116,7 @@ Code below produces the same animation as one shown at the main demo above.
     mng = AnimationManager(ax, fAnim, fargs, numFrames) 
     mng.run()
     
-More examples are included in ``./examples/`` folder.
+More examples are included in ``./mpl_animationmanager/examples/`` folder.
 
 Contacts:
 =========
