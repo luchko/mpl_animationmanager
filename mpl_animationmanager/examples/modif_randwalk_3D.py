@@ -38,7 +38,14 @@ def update_lines(num, ax, fargs):
 
 def run():
     """
-    return animation manager dialog
+    run example
+    
+    Return
+    ------
+    ax : 3D matplotlib axes object binded to the figure 
+        provides control over the animated figure example
+    dlg : QDialog
+        animation manager dialog
     
     example idea borrowed from: 
         http://matplotlib.org/examples/animation/simple_3danim.html
@@ -66,7 +73,9 @@ def run():
     # set some initial parameters
     mng.dlg.spinBox_period_modif.setValue(30)
     
-    return mng.run()
+    mng.run()
+    
+    return ax, mng.dlg
     
 
 if __name__ == '__main__':

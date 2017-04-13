@@ -5,7 +5,7 @@ Created on Mon Mar 27 23:07:30 2017
 
 @author: Ivan Luchko (luchko.ivan@gmail.com)
 
-matplotlib animation manager example    
+3D rotated graph: matplotlib animation manager example
 """
 import sys
 import matplotlib.pyplot as plt
@@ -39,8 +39,8 @@ def annotate3D(ax, s, *args, **kwargs):
     ax.add_artist(tag)
 
 
-def run():
-    """return animation manager dialog"""
+def get_animManager():
+    """Return configured AnimationManager instance example"""
                 
     # data: coordinates of nodes and links
     xn = [1.1, 1.9, 0.1, 0.3, 1.6, 0.8, 2.3, 1.2, 1.7, 1.0, -0.7, 0.1, 0.1, -0.9, 0.1, -0.1, 2.1, 2.7, 2.6, 2.0]
@@ -72,8 +72,16 @@ def run():
     mng.dlg.spinBox_period_rot.setValue(20)
     mng.dlg.spinBox_elev.setValue(20)
     
-    return mng.run()
+    return mng
     
 
+def run():
+    """run example"""
+    
+    mng = get_animManager()
+    
+    return mng.run()
+        
+    
 if __name__ == '__main__':
     sys.exit(run())

@@ -31,12 +31,13 @@ except ImportError:
 # imports requied PyQt modules
 if pyQtVersion == "PyQt4":
     from PyQt4.uic import loadUiType
-    from PyQt4.QtCore import pyqtSignal, Qt
-    from PyQt4.QtGui import QApplication, QFileDialog, QMessageBox
+    from PyQt4.QtCore import pyqtSignal, Qt, QTimer, QThread
+    from PyQt4.QtGui import QApplication, QFileDialog, QMessageBox, QIcon
 else:
     from PyQt5.uic import loadUiType
-    from PyQt5.QtCore import pyqtSignal, Qt
+    from PyQt5.QtCore import pyqtSignal, Qt, QTimer, QThread
     from PyQt5.QtWidgets import QApplication, QFileDialog, QMessageBox
+    from PyQt5.QtGui import QIcon
     
 def getPathString(output):
     '''
@@ -55,7 +56,9 @@ from matplotlib import animation
 import matplotlib.pyplot as plt
 
 # import UI created in designer
-ui_folder = 'mpl_animationmanager/'
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+ui_folder = os.path.dirname(__file__)+"/"
+#ui_folder = 'mpl_animationmanager/'
 Ui_QDialogAnimManager, QDilaog = loadUiType(ui_folder+'QDialogAnimManager.ui')
 
 # classes definition
@@ -91,6 +94,13 @@ class QDialogAnimManager(QDilaog, Ui_QDialogAnimManager):
         self.setAttribute(Qt.WA_DeleteOnClose)
         self.setupUi(self)
         
+        # add button icons
+        img_folder = os.path.join(os.path.dirname(__file__), 'images')
+        self.btnAsk.setIcon(QIcon(os.path.join(img_folder, 'info.png')))
+        self.btnStart.setIcon(QIcon(os.path.join(img_folder, 'play.png')))
+        self.btnPause.setIcon(QIcon(os.path.join(img_folder, 'pause.png')))
+        self.btnStop.setIcon(QIcon(os.path.join(img_folder, 'stop.png')))
+                
         self.filepath = str(self.lineEdit_name.text())
         self.setup_writers_comboBox()
                 
@@ -154,10 +164,12 @@ class QDialogAnimManager(QDilaog, Ui_QDialogAnimManager):
  
         self.btnBrowse.clicked.connect(self.browse_callback)
         self.btnAsk.clicked.connect(self.info_callback)
-        self.btnCancel.clicked.connect(self.cancel_callback)
+        self.btnClose.clicked.connect(self.close_callback)
         self.btnShow.clicked.connect(self.show_anim_callback)
         self.btnExport.clicked.connect(self.export_callback)
-               
+        
+        self.lineEdit_name.textChanged.connect(self.fileNameChanged_slot)
+                       
     def rotate(self, i):
         '''called during creation animation frames'''
         
@@ -271,7 +283,7 @@ class QDialogAnimManager(QDilaog, Ui_QDialogAnimManager):
             self.comboBox_writers.addItem(writer)
         if "imagemagick" in w_list:
             self.comboBox_writers.setCurrentIndex(w_list.index("imagemagick"))
-
+            
     def set_extension(self):
         '''set file extension according to chosed VideoWriter'''
         
@@ -282,11 +294,18 @@ class QDialogAnimManager(QDilaog, Ui_QDialogAnimManager):
             self.comboBox_ext.addItem("gif")
         else:
             self.comboBox_ext.addItem("mp4")
-        # set extension in filepath        
-        self.filepath = "{0}.{1}".format(os.path.splitext(self.filepath)[0],
+        # set extension in filepath  
+        self.filepath = "{0}.{1}".format(os.path.splitext(str(self.lineEdit_name.text()))[0],
                                          self.comboBox_ext.currentText()) 
         self.lineEdit_name.setText(self.filepath)
-    
+        
+    def fileNameChanged_slot(self):
+        '''preserve file extension during editing'''
+        
+        pos = self.lineEdit_name.cursorPosition()
+        self.set_extension()
+        self.lineEdit_name.setCursorPosition(pos)
+
     def browse_callback(self):
         '''get the file name where animation will be saved'''
         
@@ -356,8 +375,9 @@ For bug reports and feature requests, please go to our
 
         self.btnShow.setEnabled(True)
         print(" animation exported into '{}'".format(os.path.basename(self.filepath)))
+
         
-    def cancel_callback(self):
+    def close_callback(self):
         self.anim._stop()
         del self.anim
         self.closed.emit(True)
@@ -418,7 +438,8 @@ class AnimationManager(object):
         numFramesModif : int
             number of modification frames
 
-        '''          
+        '''
+        self.ax = ax          
         self.fig = ax.get_figure()
         self.dlg = QDialogAnimManager(ax, fAnim, fargs, numFramesModif, *args, **kwargs)
         
@@ -433,3 +454,38 @@ class AnimationManager(object):
         self.fig.show()
         
         return self.app.exec_()
+    
+    def runUnitTest(self, MyTestCase):
+        '''
+        hook for running the TestCase after launching the Qt app
+        
+        Parameters
+        ----------
+        MyTestCase: unittest.TestCase
+            class defining unittest case
+        '''
+        
+        import unittest
+        
+        test_loader = unittest.TestLoader()
+        test_names = test_loader.getTestCaseNames(MyTestCase)
+    
+        suite = unittest.TestSuite()
+        for test_name in test_names:
+            suite.addTest(MyTestCase(test_name, self.ax, self.dlg))
+     
+        class TestThread(QThread):
+        
+            def run(self):
+                '''method which runs the TestCase'''
+                result = unittest.TextTestRunner().run(suite)
+                self.parent().exit()
+                sys.exit(not result.wasSuccessful())
+
+        thread = TestThread(parent = self.app)
+        
+        timer = QTimer(parent = self.app)
+        timer.singleShot(0, thread.start)
+       
+        return self.run()
+        

@@ -22,7 +22,14 @@ def fAnim(j, ax, lineColl):
 
 def run():
     """
-    return animation manager dialog
+    run example
+    
+    Return
+    ------
+    ax : 3D matplotlib axes object binded to the figure 
+        provides control over the animated figure example
+    dlg : QDialog
+        animation manager dialog
     
     example idea borrowed from: 
         http://matplotlib.org/examples/mplot3d/rotate_axes3d_demo.html
@@ -42,7 +49,10 @@ def run():
                 
     # pass figure to animation manager
     mng = AnimationManager(ax, fAnim, fargs, numFrames)
-    return mng.run()
+
+    mng.run()
+
+    return ax, mng.dlg
     
 
 if __name__ == '__main__':

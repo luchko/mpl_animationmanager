@@ -20,7 +20,16 @@ def fAnim(i, ax, fargs):
 
 
 def run():
-    """return animation manager dialog"""
+    """
+    run example
+    
+    Return
+    ------
+    ax : 2D matplotlib axes object binded to the figure 
+        provides control over animated figure example
+    dlg : QDialog
+        animation manager dialog
+    """
                     
     NUM_STEPS = 400
     STEP = 0.05
@@ -41,7 +50,9 @@ def run():
     # set some initial parameters
     mng.dlg.spinBox_period_modif.setValue(10)
 
-    return mng.run()
+    mng.run()
+
+    return ax, mng.dlg
     
 
 if __name__ == '__main__':
