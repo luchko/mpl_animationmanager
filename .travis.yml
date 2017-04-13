@@ -27,8 +27,8 @@ install:
   # configure conda test-environment
   - conda create -q -n test-environment python=$TRAVIS_PYTHON_VERSION
   - source activate test-environment
-  - python setup.py install
   - conda install pyqt
+  - python setup.py install
       
   - pip install coveralls
  

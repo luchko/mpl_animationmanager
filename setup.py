@@ -21,7 +21,7 @@ import mpl_animationmanager
 
 long_description = '''
 Matplotlib animation manager (GUI)
-**********************************
+**********************************************
 
 .. image:: https://img.shields.io/pypi/status/mpl-animationmanager.svg
         :target: https://pypi.python.org/pypi/mpl-animationmanager
@@ -50,8 +50,8 @@ Tool is compatible with Python 2.7 or Python 3.3+ and PyQt4 4.6+ or PyQt5 5.2+.
    
 -------------------------
 
-Main features:
-==============
+Features
+=========
 
 - ``mpl_animationmanager`` library contains two classes ``AnimationManager`` and ``QDialogAnimManager`` with the same input arguments (`see API`_).
 - ``QDialogAnimManager`` is inherited from the PyQt ``QDialog``. Using this class you can easily integrate animation manager as a QDialog into your larger PyQt application.
@@ -59,6 +59,7 @@ Main features:
 - After passing the required arguments to the manager, user can setup animation properties such as: dpi, fps (frames per second), modification period.
 - For 3D animation user can also setup the rotation period, elevation and initilal azimut angles. The resulting duration of the animation equals the least common multiple of modification and rotaion periods if both are provided. 
 - Animation can be saved in gif or mp4 format by picking one of the preinstalled movie writers used by matplotlib (imagemagick, ffmpeg etc.).
+
 '''
 
 # get list of dependencies from requirements.txt file
@@ -113,7 +114,7 @@ setup(
         'Intended Audience :: Science/Research',
         'Intended Audience :: Education',
         'Intended Audience :: Other Audience',
-        'Topic :: Desktop Environment'
+        'Topic :: Desktop Environment',
         'Topic :: Scientific/Engineering',
         'Topic :: Scientific/Engineering :: Visualization',
         'Topic :: Software Development :: Widget Sets',
