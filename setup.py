@@ -20,42 +20,45 @@ import mpl_animationmanager
 
 
 long_description = '''
-Lattice graph designer 
-***********************
+Matplotlib animation manager (GUI)
+**********************************
 
-.. image:: https://img.shields.io/pypi/status/latticegraph-designer.svg
-        :target: https://pypi.python.org/pypi/latticegraph-designer
+.. image:: https://img.shields.io/pypi/status/mpl-animationmanager.svg
+        :target: https://pypi.python.org/pypi/mpl-animationmanager
         :alt: status
-        
-.. image:: https://img.shields.io/pypi/l/latticegraph_designer.svg
-        :target: https://github.com/luchko/latticegraph_designer/blob/master/LICENSE.txt
+
+.. image:: https://img.shields.io/pypi/l/mpl-animationmanager.svg
+        :target: https://github.com/luchko/mpl-animationmanager/blob/master/LICENSE.txt
         :alt: License
 
-.. image:: https://readthedocs.org/projects/latticegraph-designer/badge/?version=latest
-        :target: http://latticegraph-designer.readthedocs.io/en/latest/?badge=latest
-        :alt: Docs
-	
-Lattice graph designer is a tool which allows to visualize and create a lattice graph model using the intuitive GUI and interactive 3D drag-and-drop graph manipulation pane. It was primarily created for the `ALPS project <http://alps.comp-phys.org/>`_ to deal with a lattice graph of the `Heisenberg model <https://en.wikipedia.org/wiki/Heisenberg_model_(quantum)>`_ defined in `ALPS xml graph format <http://alps.comp-phys.org/mediawiki/index.php/Tutorials:LatticeHOWTO>`_. Support of the other formats and projects can be extended.
+.. image:: https://readthedocs.org/projects/mpl-animationmanager/badge/?version=latest
+        :target: http://mpl-animationmanager.readthedocs.io/en/latest/?badge=latest
+        :alt: Documentation Status
 
-- Git-hub repo: https://github.com/luchko/latticegraph_designer
-- Documentation: https://latticegraph-designer.readthedocs.io
+It is a small convenient tool which allows to setup and save `matplotlib animation <http://matplotlib.org/api/animation_api.html>`_ using the `PyQt <https://riverbankcomputing.com/software/pyqt/intro>`_ based GUI. Program can deal with both 2D and 3D animation. For 3D axes manager can add additional rotation of the view point resulting in both object modification and rotation animation. Also animation manager can be easily integrated in your larger PyQt project as a dialog. For more details see the Quitckstart section.
 
-GUI is based on `PyQt <https://riverbankcomputing.com/software/pyqt/intro>`_. Program is compatible with Python 2.7 or Python 3.3+ and PyQt4 4.6+ or PyQt5 5.2+.
+- Git-hub repo: https://github.com/luchko/mpl_animationmanager
+- Documentation: https://mpl-animationmanager.readthedocs.io
 
-Features
-========
+Tool is compatible with Python 2.7 or Python 3.3+ and PyQt4 4.6+ or PyQt5 5.2+.
 
-- import and visualisation of the lattice graph saved in the `ALPS compatible lattice graph xml format  <http://alps.comp-phys.org/mediawiki/index.php/Tutorials:LatticeHOWTO>`_.
-- import the crystal structure providing the unit cell parameters, sites coordinates and the space group symmetry operations.
-- import the crystal structure from the `CIF file <https://en.wikipedia.org/wiki/Crystallographic_Information_File>`_.
-- export the lattice graph to the ALPS compatible xml file.
-- interactive 3D drag-and-drop graph manipulation pane based on `matplotlib <http://matplotlib.org/>`_
-- manipulation edges (add, remove, change type) referring to the distance between vertices they connect.
-- xml code editor (highlighting, synchronization with manipulation pane)
-- exporting the figure of the lattice graph model.
-- `animation manager <https://github.com/luchko/mpl_animationmanager>`_ allows to animate a 3D model and save the animation in mp4 or gif format.
-- preferences manager allows setting the visual theme of the lattice graph displayed on the manipulation pane.
+-------------------------
 
+.. figure::  https://github.com/luchko/mpl_animationmanager/blob/master/img_src/demo.gif?raw=true
+   :align:   center
+   :figwidth: 100 %
+   
+-------------------------
+
+Main features:
+==============
+
+- ``mpl_animationmanager`` library contains two classes ``AnimationManager`` and ``QDialogAnimManager`` with the same input arguments (`see API`_).
+- ``QDialogAnimManager`` is inherited from the PyQt ``QDialog``. Using this class you can easily integrate animation manager as a QDialog into your larger PyQt application.
+- ``AnimationManager`` is a small class build on top of the ``QDialogAnimManager`` and uses the input arguments to initialize the ``QDialogAnimManager`` object and run a PyQt application using ``run()`` function.
+- After passing the required arguments to the manager, user can setup animation properties such as: dpi, fps (frames per second), modification period.
+- For 3D animation user can also setup the rotation period, elevation and initilal azimut angles. The resulting duration of the animation equals the least common multiple of modification and rotaion periods if both are provided. 
+- Animation can be saved in gif or mp4 format by picking one of the preinstalled movie writers used by matplotlib (imagemagick, ffmpeg etc.).
 '''
 
 # get list of dependencies from requirements.txt file
@@ -91,26 +94,31 @@ setup(
     url='https://github.com/luchko/mpl_animationmanager',
     author='Ivan Luchko',
     author_email='luchko.ivan@gmail.com',
-#    documentation='https://latticegraph-designer.readthedocs.io',
+    documentation='https://mpl-animationmanager.readthedocs.io',
     license='MIT',
     packages=['mpl_animationmanager', 
               'mpl_animationmanager.examples',
               'mpl_animationmanager.test'],
-#    install_requires=install_requires,
+    install_requires=install_requires,
     platforms='any',
     include_package_data=True,
     zip_safe=False,
     cmdclass = {'test': MyUnitTest},
-#    keywords='physics material-science graph-visualization crystal-structure lattice alps-project gui',
+    keywords='matplotlib animation animation-3d visualization gui gif pdf',
     classifiers = [
         'Programming Language :: Python',
         'Development Status :: 3 - Alpha',
         'Operating System :: OS Independent',
+        'Intended Audience :: Developers',
         'Intended Audience :: Science/Research',
+        'Intended Audience :: Education',
+        'Intended Audience :: Other Audience',
+        'Topic :: Desktop Environment'
         'Topic :: Scientific/Engineering',
-        'Topic :: Scientific/Engineering :: Physics',
-        'Topic :: Scientific/Engineering :: Chemistry',
         'Topic :: Scientific/Engineering :: Visualization',
+        'Topic :: Software Development :: Widget Sets',
+        'Topic :: Multimedia :: Graphics',
+        'Topic :: Multimedia :: Graphics :: Presentation',
         'License :: OSI Approved :: MIT License',
         'Natural Language :: English'
         ]
