@@ -10,7 +10,7 @@ Matplotlib animation manager (GUI) 1.0a1
         :alt: status
 
 .. image:: https://img.shields.io/pypi/l/mpl-animationmanager.svg
-        :target: https://github.com/luchko/mpl-animationmanager/blob/master/LICENSE.txt
+        :target: https://github.com/luchko/mpl_animationmanager/blob/master/LICENSE.txt
         :alt: License
 
 .. image:: https://readthedocs.org/projects/mpl-animationmanager/badge/?version=latest
