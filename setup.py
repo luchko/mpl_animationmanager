@@ -13,8 +13,6 @@ import sys
 import pip
 from setuptools import setup
 
-import mpl_animationmanager
-
 #with open(os.path.abspath('README.rst'), encoding='utf-8') as f:
 #    long_description = f.read()
 
@@ -70,7 +68,6 @@ pip.main(['install', 'matplotlib'])
 #for package in install_requires:
 #    pip.main(['install', package])
 
-
 # define custom test runner 
 from setuptools.command.test import test as TestCommand
 
@@ -85,6 +82,7 @@ class MyUnitTest(TestCommand):
         errcode = test_based_on_examples.main()
         sys.exit(errcode)
 
+import mpl_animationmanager # need to be imported after matplotlib have been installed
 
 setup(
     name='mpl_animationmanager',
