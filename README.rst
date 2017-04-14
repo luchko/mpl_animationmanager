@@ -169,16 +169,24 @@ Code below produces the same animation as one shown at the main demo above.
     mng = AnimationManager(ax, fAnim, fargs, numFrames) 
     mng.run()
 
-`jump to the example section`_
+.. _`jump to the example section`:
 
 More examples
 -------------
 
 More examples are included in ``./mpl_animationmanager/examples/`` folder.
 
+Running ``unittest``
+--------------------
+
+After making any changes in the source code you can run ``unitittest`` to make sure that nothing is broken by typing in your command prompt:
+
+``$ python setup.py test``
+
+
 Contacts
 ========
 
 About the feature extension or bugs report you can create `the issue or feature request <https://github.com/luchko/mpl_animationmanager/issues>`_ or feel free to contact me directly by e-mail:
 
-	**Ivan Luchko** - luchko.ivan@gmail.com
+**Ivan Luchko** - luchko.ivan@gmail.com
