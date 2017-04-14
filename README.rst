@@ -177,6 +177,8 @@ More examples with gif demo are included in the ``./mpl_animationmanager/example
 
 Second option is to run the python script ``run_examples.py`` located in the root project directory after `downloading the source code <https://github.com/luchko/mpl_animationmanager/archive/master.zip>`_. In this script you can also pick the examples you would like to run.
 
+Following gif animation examples were created with the Matplotlib animation manager:
+
 .. raw:: html
 
 	<table width="500" border="0" cellpadding="5">
@@ -184,15 +186,15 @@ Second option is to run the python script ``run_examples.py`` located in the roo
 	<tr>
 
 	<td align="center" valign="center">
-	<img src="https://github.com/luchko/mpl_animationmanager/blob/master/img_src/example_oscillation2d.gif?raw=true" alt="description here" />
+	<img src="https://github.com/luchko/mpl_animationmanager/blob/master/img_src/example_oscillation2d.gif?raw=true" alt="example_oscillation2d" />
 	<br />
-	Caption text centered under the image.
+	2D oscillation (<a href="https://github.com/luchko/mpl_animationmanager/blob/master/mpl_animationmanager/examples/oscillation_2D.py">see script</a>)
 	</td>
 
 	<td align="center" valign="center">
 	<img src="https://github.com/luchko/mpl_animationmanager/blob/master/img_src/example_graph3d.gif?raw=true" alt="description here" />
 	<br />
-	Caption text centered under the image.
+	3D rotated graph (<a href="https://github.com/luchko/mpl_animationmanager/blob/master/mpl_animationmanager/examples/rot_graph_3D.py">see script</a>)
 	</td>
 
 	</tr>
