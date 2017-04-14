@@ -51,13 +51,48 @@ Features
 - For 3D animation user can also setup the rotation period, elevation and initilal azimut angles. The resulting duration of the animation equals the least common multiple of modification and rotaion periods if both are provided. 
 - Animation can be saved in gif or mp4 format by picking one of the preinstalled movie writers used by matplotlib (imagemagick, ffmpeg etc.).
 
-Quickstart
-==========
+Dependencies
+============
 
-Installation (cross-platform way from source)
----------------------------------------------
+- **Python** 2.7 or 3.3+
+- **PyQt4** 4.6+ or **PyQt5** 5.2+ : PyQt4 is recommended.
+- **Matplotlib**
 
-NOT IMPLEMENTED YET
+**Important note**: *Most dependencies listed above are installed automatically, however in some cases you might need to istall them separately (see next section).*
+
+**Install PyQt4 or PyQt5**
+
+- in case you use conda type: ``$ conda install pyqt=4`` (or 5)
+- otherwise follow the links `PyQt4 <http://pyqt.sourceforge.net/Docs/PyQt4/installation.html>`_ or `PyQt5 <http://pyqt.sourceforge.net/Docs/PyQt5/installation.html>`_.
+
+Installation and usage
+=======================
+
+This section explains how to install and use the latest stable release of the Matplotlib animation manager in one of the cross-platform ways listed bellow. If you prefer just to have a taste of the tool you may `jump to the example section`_.
+
+Installation using ``conda`` `scientific package manager <https://conda.io/docs/index.html>`_ (recommended way)
+-----------------------------------------------------------------------------------------------------------------
+
+*PROJECT IS NOT RELEASED YET*
+
+Type in your command prompt:
+
+``$ pip install conda`` (if ``conda`` is not installed yet)
+
+``$ conda install latticegraph_designer``
+
+**Note:** *All dependencies are installed by* ``conda`` *automatically.*
+
+Installation using ``pip`` package manager from `PyPI <https://pypi.python.org/pypi>`_
+--------------------------------------------------------------------------------------
+
+*PROJECT IS NOT RELEASED YET*
+
+Type in your command prompt:
+
+``$ pip install latticegraph_designer``
+
+**Important note:** *This also installs all dependencies except PyQt4 or PyQt5. Those have to be installed separately after installing Python.*
 
 Running from source
 -------------------
@@ -66,10 +101,11 @@ It is possible to use animation manager without installing it.
 
 1. Make sure that PyQt4 or PyQt5 package is installed.
 2. `Download a source <https://github.com/luchko/mpl_animationmanager/archive/master.zip>`_ of the last stable package version.
-3. Copy the ``./mpl_animationmanager/`` package folder into the root directiory of your script.
+3. Copy the ``./mpl_animationmanager/`` package source folder into the root directiory of your script.
 4. Now you can import ``mpl_animationmanager`` module to your sript the same way as it would have been installed.
 
-You may want to do this for fixing bugs, adding new features, learning how the tool works or just getting a taste of it.
+You may want to do this for fixing bugs, adding new features, integrating the widget into your own PyQt project, learning how the tool works or just getting a taste of it.
+
 
 .. _`see API`:
 
@@ -132,7 +168,12 @@ Code below produces the same animation as one shown at the main demo above.
     # pass figure to the animation manager
     mng = AnimationManager(ax, fAnim, fargs, numFrames) 
     mng.run()
-    
+
+`jump to the example section`_
+
+More examples
+-------------
+
 More examples are included in ``./mpl_animationmanager/examples/`` folder.
 
 Contacts
