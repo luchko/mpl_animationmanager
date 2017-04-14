@@ -79,7 +79,7 @@ Type in your command prompt:
 
 ``$ pip install conda`` (if ``conda`` is not installed yet)
 
-``$ conda install latticegraph_designer``
+``$ conda install mpl_animationmanager``
 
 **Note:** *All dependencies are installed by* ``conda`` *automatically.*
 
@@ -90,7 +90,7 @@ Installation using ``pip`` package manager from `PyPI <https://pypi.python.org/p
 
 Type in your command prompt:
 
-``$ pip install latticegraph_designer``
+``$ pip install mpl_animationmanager``
 
 **Important note:** *This also installs all dependencies except PyQt4 or PyQt5. Those have to be installed separately after installing Python.*
 
@@ -130,7 +130,6 @@ Both ``AnimationManager`` and ``QDialogAnimManager`` classes take the same input
                 arguments used by the "fAnim" function during the "ax" modification
             numFramesModif : int
                 number of modification frames
-    
             '''          
         
 Small example
@@ -174,7 +173,11 @@ Code below produces the same animation as one shown at the main demo above.
 More examples
 -------------
 
-More examples are included in ``./mpl_animationmanager/examples/`` folder.
+More examples are included in the ``./mpl_animationmanager/examples/`` (`link <https://github.com/luchko/mpl_animationmanager/tree/master/mpl_animationmanager/examples>`_) folder. You might run them as Python scripts after instalation ``mpl_animationmanager`` package. 
+
+Second option is to run the python script ``run_examples.py`` located in the root project directory after `downloading the source code <https://github.com/luchko/mpl_animationmanager/archive/master.zip>`_. In this script you can also pick the examples you would like to run.
+
+You might also have a look at the larger PyQt project `Lattice graph designer <https://github.com/luchko/latticegraph_designer>`_ where ``QDialogAnimManager`` is integrated to export the rotating visualization of 3D model.
 
 Running ``unittest``
 --------------------
