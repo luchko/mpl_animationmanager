@@ -173,7 +173,7 @@ Code below produces the same animation as one shown at the main demo above.
 More examples
 -------------
 
-More examples are included in the ``./mpl_animationmanager/examples/`` (`link <https://github.com/luchko/mpl_animationmanager/tree/master/mpl_animationmanager/examples>`_) folder. You might run them as Python scripts after instalation ``mpl_animationmanager`` package. 
+More examples with gif demo are included in the ``./mpl_animationmanager/examples/`` folder (`link <https://github.com/luchko/mpl_animationmanager/tree/master/mpl_animationmanager/examples>`_). You might run them as a Python script after instalation ``mpl_animationmanager`` package. 
 
 Second option is to run the python script ``run_examples.py`` located in the root project directory after `downloading the source code <https://github.com/luchko/mpl_animationmanager/archive/master.zip>`_. In this script you can also pick the examples you would like to run.
 
