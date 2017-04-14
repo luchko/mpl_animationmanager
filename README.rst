@@ -207,7 +207,7 @@ Following gif animation examples were created with the Matplotlib animation mana
 
 	</table>
 
-You might also have a look at the larger PyQt project `Lattice graph designer <https://github.com/luchko/latticegraph_designer>`_ where ``QDialogAnimManager`` is integrated to export the rotating visualization of 3D model.
+You might also have a look at the larger PyQt project `Lattice graph designer <https://github.com/luchko/latticegraph_designer>`_ where ``QDialogAnimManager`` is integrated for exporting the rotating visualization of 3D model.
 
 Running ``unittest``
 --------------------
