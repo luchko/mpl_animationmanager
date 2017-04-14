@@ -68,10 +68,6 @@ install:
 	    python setup.py install;
     fi
 
-  - if [ "${USE_CONDA}" = "true" ]; then
-        source activate test-environment;
-    fi
-    
   - pip install coveralls;
   - conda info --env;
   - conda list;
