@@ -177,25 +177,27 @@ More examples with gif demo are included in the ``./mpl_animationmanager/example
 
 Second option is to run the python script ``run_examples.py`` located in the root project directory after `downloading the source code <https://github.com/luchko/mpl_animationmanager/archive/master.zip>`_. In this script you can also pick the examples you would like to run.
 
-<table width="500" border="0" cellpadding="5">
+.. raw:: html
 
-<tr>
+	<table width="500" border="0" cellpadding="5">
 
-<td align="center" valign="center">
-<img src="https://github.com/luchko/mpl_animationmanager/blob/master/img_src/example_oscillation2d.gif?raw=true" alt="description here" />
-<br />
-Caption text centered under the image.
-</td>
+	<tr>
 
-<td align="center" valign="center">
-<img src="https://github.com/luchko/mpl_animationmanager/blob/master/img_src/example_graph3d.gif?raw=true" alt="description here" />
-<br />
-Caption text centered under the image.
-</td>
+	<td align="center" valign="center">
+	<img src="https://github.com/luchko/mpl_animationmanager/blob/master/img_src/example_oscillation2d.gif?raw=true" alt="description here" />
+	<br />
+	Caption text centered under the image.
+	</td>
 
-</tr>
+	<td align="center" valign="center">
+	<img src="https://github.com/luchko/mpl_animationmanager/blob/master/img_src/example_graph3d.gif?raw=true" alt="description here" />
+	<br />
+	Caption text centered under the image.
+	</td>
 
-</table>
+	</tr>
+
+	</table>
 
 You might also have a look at the larger PyQt project `Lattice graph designer <https://github.com/luchko/latticegraph_designer>`_ where ``QDialogAnimManager`` is integrated to export the rotating visualization of 3D model.
 
