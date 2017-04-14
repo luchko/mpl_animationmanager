@@ -20,9 +20,6 @@ matrix:
       env: USE_QT_API="5" USE_CONDA=true
       os: linux
     - python: "3.6"
-      env: USE_QT_API="4" USE_CONDA=true
-      os: linux
-    - python: "3.6"
       env: USE_QT_API="5" USE_CONDA=true
       os: linux
   
