@@ -36,6 +36,8 @@ install:
           source activate test-environment;
       fi
   - pip install coveralls
+  - conda info --env
+  - conda list
 
 script:
   - coverage run --source mpl_animationmanager setup.py test
