@@ -11,6 +11,10 @@ via the nmg.runUnitTest(MyTestCase) method.
 
 TestCase gets access to the figure axes and the manager dialog during 
 the TestCase instance creationg via __init__ method.
+
+You might want to decrease DELAY constant or signal processing in the main loop
+in order to make test run faster. Also you might want to icrease DELAY in case
+test fail due to larte delay in slots are processing.
 """
 
 __author__ = "Ivan Luchko (luchko.ivan@gmail.com)"
@@ -29,7 +33,7 @@ from mpl_animationmanager.examples import modif_randwalk_3D
  
 test_folder = "./mpl_animationmanager/test/"
 
-DELAY = 0.3 # [sec] delay for signal processing in the main loop
+DELAY = 0.5 # [sec] delay for signal processing in the main loop
 
 def isRotated(ax, dlg):
     '''
@@ -52,6 +56,7 @@ class modif_oscillation_2D_Test(unittest.TestCase):
         
         self.ax, self.dlg = ax, dlg
         self.fig = self.ax.get_figure()
+        self.dlg.spinBox_period_modif.setValue(5)
             
     def test_initialization(self):
         '''
@@ -91,7 +96,7 @@ class modif_oscillation_2D_Test(unittest.TestCase):
 
     def test_modif_props(self):
 
-        # change rotation period
+        # change modification period
         t = 30
         self.dlg.spinBox_period_modif.setValue(t)
         time.sleep(DELAY) # wait for signal handling in the main event loop
@@ -143,6 +148,16 @@ class modif_oscillation_2D_Test(unittest.TestCase):
         self.dlg.spinBox_fps.setValue(24)
         self.dlg.spinBox_period_modif.setValue(10)
         time.sleep(3*DELAY) # wait for signal handling in the main event loop
+
+    def test_Info(self):
+        
+        # make the animation small for faster export
+        self.dlg.btnAsk.click()
+        time.sleep(2*DELAY) # wait for signal handling in the main event loop
+        self.assertTrue(self.dlg.msg.isVisible())
+        self.dlg.msg.accept()
+        time.sleep(2*DELAY) # wait for signal handling in the main event loop
+        self.assertTrue(not self.dlg.msg.isVisible())
 
 
 class rot_graph_3D_Test(unittest.TestCase):
@@ -278,15 +293,162 @@ class rot_graph_3D_Test(unittest.TestCase):
         time.sleep(3*DELAY) # wait for signal handling in the main event loop
 
 
-    tests_require=['pytest'],
-    test_suite='sandman.test.test_sandman',
+class randwalk_3D_Test(unittest.TestCase):
+    '''Animation manager test based on the '3D Random walk' example'''
+
+    def __init__(self, testname, ax, dlg):
+        
+        unittest.TestCase.__init__(self, testname)
+        
+        self.ax, self.dlg = ax, dlg
+        self.fig = self.ax.get_figure()
+            
+    def test_initialization(self):
+        '''
+        test widgets comonent according to type of figure and animation
+            - 2D/3D axes
+            - object modification present
+        '''
+        # curent example has modification
+        self.assertTrue(self.dlg.widget_modif.isVisible())
+        self.assertTrue(self.dlg.checkBox_modif.isChecked())
+        
+        # curent example are axes 3D, thus object can be rotated 
+        self.assertTrue(self.dlg.widget_rot.isVisible())
+        self.assertTrue(self.dlg.checkBox_rot.isChecked())        
+        
+        # period is least commot multiple of period_modif and period_rot
+        self.assertTrue(self.dlg.period % self.dlg.period_modif == 0)
+        self.assertTrue(self.dlg.period % self.dlg.period_rot == 0)
+        
+    def test_quality_props(self):
+                
+        # change dpi
+        dpi = 50
+        self.dlg.spinBox_dpi.setValue(dpi)
+        time.sleep(DELAY) # wait for signal handling in the main event loop
+        self.assertEqual(self.dlg.dpi, dpi)
+        self.assertEqual(self.fig.get_dpi(), dpi)
+        
+        # change fps
+        fps = 10
+        self.dlg.spinBox_fps.setValue(fps)
+        time.sleep(DELAY) # wait for signal handling in the main event loop
+        self.assertEqual(self.dlg.fps, fps)
+        
+        # restore defaults:
+        self.dlg.spinBox_dpi.setValue(100)
+        self.dlg.spinBox_fps.setValue(24)
+        time.sleep(3*DELAY) # wait for signal handling in the main event loop
+
+    def test_modif_props(self):
+
+        # change modification period
+        t = 30
+        self.dlg.spinBox_period_modif.setValue(t)
+        time.sleep(DELAY) # wait for signal handling in the main event loop
+        self.assertEqual(self.dlg.period_modif, t)     
+        # period is least commot multiple of period_modif and period_rot
+        self.assertTrue(self.dlg.period % self.dlg.period_modif == 0)
+        self.assertTrue(self.dlg.period % self.dlg.period_rot == 0)
+
+    def test_3D_props(self):
+
+        # change rotation period
+        t = 25
+        self.dlg.spinBox_period_rot.setValue(t)
+        time.sleep(DELAY) # wait for signal handling in the main event loop
+        self.assertEqual(self.dlg.period_rot, t)     
+        # period is least commot multiple of period_modif and period_rot
+        self.assertTrue(self.dlg.period % self.dlg.period_modif == 0)
+        self.assertTrue(self.dlg.period % self.dlg.period_rot == 0)
+
+        # change elevation
+        elev = 10
+        self.dlg.spinBox_elev.setValue(elev)
+        time.sleep(DELAY) # wait for signal handling in the main event loop
+        self.assertEqual(self.dlg.elevation, elev)
+        self.assertEqual(self.ax.elev, elev)
+        
+        # enable/diable rotation
+        self.dlg.checkBox_rot.setChecked(False)
+        time.sleep(3*DELAY) # wait for signal handling in the main event loop
+        self.assertTrue(not isRotated(self.ax, self.dlg))
+        self.dlg.checkBox_rot.setChecked(True)
+        time.sleep(3*DELAY) # wait for signal handling in the main event loop
+        self.assertTrue(isRotated(self.ax, self.dlg))
+        
+        # change initial azimut
+        azim = -50
+        self.dlg.btnStop.click()
+        time.sleep(DELAY) # wait for signal handling in the main event loop
+        self.dlg.spinBox_azim.setValue(azim)
+        time.sleep(DELAY) # wait for signal handling in the main event loop
+        self.assertEqual(self.dlg.zero_azim, azim)
+        self.assertEqual(self.ax.azim, azim)
+
+    def test_control_btns(self):
+        
+        # test pause button
+        self.dlg.btnPause.click()
+        time.sleep(2*DELAY) # wait for signal handling in the main event loop
+        self.assertTrue(not isRotated(self.ax, self.dlg))
+
+        # test start button
+        self.dlg.btnStart.click()
+        time.sleep(2*DELAY) # wait for signal handling in the main event loop
+        self.assertTrue(isRotated(self.ax, self.dlg))
+
+        # test stop button
+        self.assertNotEqual(self.ax.azim, self.dlg.spinBox_azim.value())
+        self.dlg.btnStop.click()
+        time.sleep(2*DELAY) # wait for signal handling in the main event loop
+        self.assertTrue(not isRotated(self.ax, self.dlg))
+        self.assertEqual(self.ax.azim, self.dlg.spinBox_azim.value())
+        
+        # test start button
+        self.dlg.btnStart.click()
+        time.sleep(2*DELAY) # wait for signal handling in the main event loop
+        self.assertTrue(isRotated(self.ax, self.dlg))
+
+    def test_exportAnim(self):
+        
+        # make the animation small for faster export
+        self.dlg.spinBox_dpi.setValue(30)
+        self.dlg.spinBox_fps.setValue(10)
+        self.dlg.spinBox_period_rot.setValue(2)
+        self.dlg.spinBox_period_modif.setValue(2)
+        time.sleep(3*DELAY) # wait for signal handling in the main event loop
+        
+        # export animation
+        path = os.path.abspath(test_folder+"test")
+        self.dlg.lineEdit_name.setText(path)
+        self.dlg.EXPORT_RUNNING = True
+        self.dlg.btnExport.click()
+        # wait until exporting is finished
+        while self.dlg.EXPORT_RUNNING: time.sleep(2*DELAY)
+        self.assertTrue(os.path.exists(self.dlg.filepath))
+        # remove testfile
+        os.remove(self.dlg.filepath)
+
+        # restore default settings
+        self.dlg.btnStart.click()
+        time.sleep(2*DELAY) # wait for signal handling in the main event loop
+        self.assertTrue(isRotated(self.ax, self.dlg))
+        # make the animation small for faster export
+        self.dlg.spinBox_dpi.setValue(100)
+        self.dlg.spinBox_fps.setValue(24)
+        self.dlg.spinBox_period_rot.setValue(10)
+        self.dlg.spinBox_period_modif.setValue(20)
+        time.sleep(3*DELAY) # wait for signal handling in the main event loop
 
 
 def main():
     '''run test suits and return the error code'''
     
     TestExamples_list = [(oscillation_2D, modif_oscillation_2D_Test), 
-                         (rot_graph_3D, rot_graph_3D_Test)]
+                         (rot_graph_3D, rot_graph_3D_Test),
+                         (modif_randwalk_3D, randwalk_3D_Test)]
     
     WAS_SUCCESSFUL = True
     

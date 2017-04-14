@@ -12,10 +12,12 @@ omit =
 exclude_lines =
 
     if __name__ == .__main__.:
-    
+
     pragma: no cover
     
-    .exec()_
+    except ImportError
+    
+    msb_noWriters
     
     #required for dealing with modal QFileDialog
     def getPathString
@@ -25,3 +27,7 @@ exclude_lines =
     
     # required additional system tools
     def show_anim_callback
+    
+    def run
+    
+    def close_callback

@@ -5,7 +5,7 @@ Created on Mon Mar 27 23:05:42 2017
 
 @author: Ivan Luchko (luchko.ivan@gmail.com)
 
-Random walk: matplotlib animation manager usage example        
+3D Random walk: matplotlib animation manager usage example        
 """    
 import sys
 import numpy as np
@@ -36,16 +36,9 @@ def update_lines(num, ax, fargs):
     return lines
 
 
-def run():
+def get_animManager():
     """
-    run example
-    
-    Return
-    ------
-    ax : 3D matplotlib axes object binded to the figure 
-        provides control over the animated figure example
-    dlg : QDialog
-        animation manager dialog
+    Return axample of configured AnimationManager instance
     
     example idea borrowed from: 
         http://matplotlib.org/examples/animation/simple_3danim.html
@@ -54,7 +47,7 @@ def run():
     NUM_STEPS = 1000
     STEP_MAX = 0.1
 
-    fig = plt.figure('Random walk example')
+    fig = plt.figure('3D Random walk example')
     ax = fig.gca(projection='3d')
     ax.set_axis_off()
     # Setting the axes properties
@@ -73,10 +66,16 @@ def run():
     # set some initial parameters
     mng.dlg.spinBox_period_modif.setValue(30)
     
-    mng.run()
-    
-    return ax, mng.dlg
+    return mng
     
 
+def run():
+    """run example"""
+    
+    mng = get_animManager()
+    
+    return mng.run()
+        
+    
 if __name__ == '__main__':
     sys.exit(run())

@@ -48,7 +48,6 @@ def getPathString(output):
     returns a path string of the QFileDialog output
     
     pyQt5 returns a tuple (path, filter) not just a path QString like pyQt4
-    
     '''
     return str(output if pyQtVersion == "PyQt4" else output[0])
 
