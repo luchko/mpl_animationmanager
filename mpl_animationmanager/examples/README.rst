@@ -1,7 +1,7 @@
 Examples
 ========
 
-List of the animation examples produces my the `Matplotlib animation manager <https://github.com/luchko/mpl_animationmanager/>`_
+List of the gif animation examples created with the `Matplotlib animation manager <https://github.com/luchko/mpl_animationmanager/>`_
 
 2D oscillation (`see script <https://github.com/luchko/mpl_animationmanager/blob/master/mpl_animationmanager/examples/oscillation_2D.py>`_)
 -------------------------------------------------------------------------------------------------------------------------------------------------
