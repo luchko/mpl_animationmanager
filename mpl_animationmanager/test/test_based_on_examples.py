@@ -29,7 +29,7 @@ from mpl_animationmanager.examples import modif_randwalk_3D
  
 test_folder = "./mpl_animationmanager/test/"
 
-DELAY = 0.2 # [sec] delay for signal processing in the main loop
+DELAY = 0.3 # [sec] delay for signal processing in the main loop
 
 def isRotated(ax, dlg):
     '''
@@ -39,7 +39,7 @@ def isRotated(ax, dlg):
     '''
     azim0 = ax.azim
     # wait some time until 3D axes are rotated in main thread 
-    time.sleep(1.01/dlg.fps)
+    time.sleep(1.1/dlg.fps)
     
     return azim0 != ax.azim
 
