@@ -67,7 +67,7 @@ install:
     fi
     
   - pip install coveralls;
-  - conda info --env
+  - sudo apt-get install ffmpeg
   - conda list
 
 script:

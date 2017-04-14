@@ -16,8 +16,10 @@ exclude_lines =
     pragma: no cover
     
     except ImportError
+    except AttributeError
     
     msb_noWriters
+    return
     
     #required for dealing with modal QFileDialog
     def getPathString
