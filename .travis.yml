@@ -31,9 +31,7 @@ before_install:
   - "sh -e /etc/init.d/xvfb start"
   
 install:
-
   - sudo apt-get update
-
   # Define the value to download
   - if [ "$TRAVIS_OS_NAME" = "linux" ]; then
         MINICONDA_OS=$MINICONDA_LINUX;
