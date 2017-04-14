@@ -53,20 +53,19 @@ Tool is compatible with Python 2.7 or Python 3.3+ and PyQt4 4.6+ or PyQt5 5.2+.
 Features
 =========
 
-- ``mpl_animationmanager`` library contains two classes ``AnimationManager`` and ``QDialogAnimManager`` with the same input arguments (`see API`_).
+- ``mpl_animationmanager`` library contains two classes ``AnimationManager`` and ``QDialogAnimManager`` with the same input arguments.
 - ``QDialogAnimManager`` is inherited from the PyQt ``QDialog``. Using this class you can easily integrate animation manager as a QDialog into your larger PyQt application.
 - ``AnimationManager`` is a small class build on top of the ``QDialogAnimManager`` and uses the input arguments to initialize the ``QDialogAnimManager`` object and run a PyQt application using ``run()`` function.
 - After passing the required arguments to the manager, user can setup animation properties such as: dpi, fps (frames per second), modification period.
 - For 3D animation user can also setup the rotation period, elevation and initilal azimut angles. The resulting duration of the animation equals the least common multiple of modification and rotaion periods if both are provided. 
 - Animation can be saved in gif or mp4 format by picking one of the preinstalled movie writers used by matplotlib (imagemagick, ffmpeg etc.).
-
 '''
 
 # get list of dependencies from requirements.txt file
 with open(os.path.abspath('requirements.txt')) as f:
     install_requires = [p for p in f.read().splitlines() if p != '']
 
-pip.main(['install', 'numpy'])
+pip.main(['install', 'matplotlib'])
 ## trick required to install numpy
 #for package in install_requires:
 #    pip.main(['install', package])
