@@ -43,4 +43,4 @@ else
 	python setup.py install;
 fi
 
-pip install coveralls
+#pip install coveralls

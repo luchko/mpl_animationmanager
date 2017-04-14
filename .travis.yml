@@ -32,6 +32,10 @@ before_install:
   
 install:
   - ./install.sh;
+  - if [ "${USE_CONDA}" = "true" ]; then
+          source activate test-environment;
+      fi
+  - pip install coveralls
 
 script:
   - coverage run --source mpl_animationmanager setup.py test
