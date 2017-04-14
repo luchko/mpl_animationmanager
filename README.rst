@@ -177,7 +177,7 @@ More examples with gif demo are included in the ``./mpl_animationmanager/example
 
 Second option is to run the python script ``run_examples.py`` located in the root project directory after `downloading the source code <https://github.com/luchko/mpl_animationmanager/archive/master.zip>`_. In this script you can also pick the examples you would like to run.
 
-Following gif animation examples were created with the Matplotlib animation manager:
+Following gif-animation examples were created with the Matplotlib animation manager:
 
 .. raw:: html
 
