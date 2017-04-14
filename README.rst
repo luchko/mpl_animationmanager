@@ -192,9 +192,15 @@ Following gif animation examples were created with the Matplotlib animation mana
 	</td>
 
 	<td align="center" valign="center">
-	<img src="https://github.com/luchko/mpl_animationmanager/blob/master/img_src/example_graph3d.gif?raw=true" alt="description here" />
+	<img src="https://github.com/luchko/mpl_animationmanager/blob/master/img_src/example_graph3d.gif?raw=true" alt="example_graph3d" />
 	<br />
 	3D rotated graph (<a href="https://github.com/luchko/mpl_animationmanager/blob/master/mpl_animationmanager/examples/rot_graph_3D.py">see script</a>)
+	</td>
+
+	<td align="center" valign="center">
+	<img src="https://github.com/luchko/mpl_animationmanager/blob/master/img_src/example_randomwalk3d.gif?raw=true" alt="example_randomwalk3d" />
+	<br />
+	3D random walk (<a href="https://github.com/luchko/mpl_animationmanager/blob/master/mpl_animationmanager/examples/modif_randwalk_3D.py">see script</a>)
 	</td>
 
 	</tr>
