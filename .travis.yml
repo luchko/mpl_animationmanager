@@ -10,20 +10,20 @@ matrix:
   include:
     # Linux using pip packages
     - python: "3.5"
-      env: USE_QT_API=PyQt5 USE_CONDA=false
+      env: USE_QT_API="5" USE_CONDA=false
       os: linux
     # Linux using conda packages
     - python: "2.7"
-      env: USE_QT_API=PyQt4 USE_CONDA=true
+      env: USE_QT_API="4" USE_CONDA=true
       os: linux
     - python: "2.7"
-      env: USE_QT_API=PyQt5 USE_CONDA=true
+      env: USE_QT_API="5" USE_CONDA=true
       os: linux
     - python: "3.6"
-      env: USE_QT_API=PyQt4 USE_CONDA=true
+      env: USE_QT_API="4" USE_CONDA=true
       os: linux
     - python: "3.6"
-      env: USE_QT_API=PyQt5 USE_CONDA=true
+      env: USE_QT_API="5" USE_CONDA=true
       os: linux
   
 before_install:
@@ -61,16 +61,17 @@ install:
   - if [[ "$USE_CONDA" = "true" ]]; then
       conda create -q -n test-environment python=$TRAVIS_PYTHON_VERSION;
       source activate test-environment;
-      conda install pyqt;
+      
+      conda install pyqt=$USE_QT_API;
       python setup.py install;
     else
-      conda install pyqt;
+      conda install pyqt=$USE_QT_API;
       python setup.py install;
     fi
     
   - pip install coveralls;
-  - conda info --env;
-  - conda list;
+  - conda info --env
+  - conda list
 
 script:
   - coverage run --source mpl_animationmanager setup.py test
