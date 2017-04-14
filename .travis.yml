@@ -32,10 +32,6 @@ before_install:
 
 install:
   - sudo apt-get update
-
-  
-install:
-  - sudo apt-get update
   # Define the value to download
   - if [ "$TRAVIS_OS_NAME" = "linux" ]; then
         MINICONDA_OS=$MINICONDA_LINUX;
