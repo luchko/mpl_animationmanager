@@ -16,6 +16,8 @@ Module is compatible with both pyQt4 and pyQt5
 """
 from __future__ import division # to handle python2 int division
 
+import matplotlib
+
 # define PyQt version
 try:
     import PyQt4 as PyQt
@@ -30,10 +32,12 @@ except ImportError:
 
 # imports requied PyQt modules
 if pyQtVersion == "PyQt4":
+    matplotlib.use('Qt4Agg')
     from PyQt4.uic import loadUiType
     from PyQt4.QtCore import pyqtSignal, Qt, QTimer, QThread
     from PyQt4.QtGui import QApplication, QFileDialog, QMessageBox, QIcon
 else:
+    matplotlib.use('Qt5Agg')
     from PyQt5.uic import loadUiType
     from PyQt5.QtCore import pyqtSignal, Qt, QTimer, QThread
     from PyQt5.QtWidgets import QApplication, QFileDialog, QMessageBox
